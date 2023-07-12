@@ -1,0 +1,73 @@
+water = 400
+milk = 540
+beans = 120
+cups = 9
+money = 550
+
+
+while True:
+    action = input('Write action (buy, fill, take, remaining, exit):\n')     
+    if action == 'buy':
+        product = input('\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:\n')
+        if product == 'back':
+            pass
+        elif int(product) == 1:
+            
+            check_1 = [water/250, milk, beans/16 , cups/1]
+            if min(check_1) > 1: 
+                water -= 250
+                beans -= 16
+                cups -= 1
+                print('I have enough resources, making you a coffee!\n')
+                money += 4
+            else:
+                print('Sorry, not enough water!\n')
+            
+        elif int(product) == 2:
+            check_2 = [water/350, milk/75, beans/20, cups/1]
+            if min(check_2) > 1:
+                print('I have enough resources, making you a coffee!\n')
+                water -= 350
+                milk -=75
+                beans -= 20
+                cups -= 1
+                money += 7
+            else:
+                print('Sorry, not enough water!\n')
+        elif int(product) == 3:
+            
+            check_3 = [water/200, milk/100, beans/12 , cups/1]
+                
+            if min(check_3) > 1:
+                water -= 200
+                milk -= 100
+                beans -= 12
+                cups -= 1
+                print('I have enough resources, making you a coffee!\n')
+                money += 6
+            else:
+                print('Sorry, not enough water!\n')
+    elif action == 'fill':
+        water_add = int(input('\nWrite how many ml of water you want to add:\n'))
+        milk_add = int(input('Write how many ml of milk you want to add:\n'))
+        beans_add = int(input('Write how many grams of coffee beans you want to add:\n'))
+        cups_add = int(input('Write how many disposable cups you want to add:\n'))
+        water += water_add
+        milk += milk_add
+        beans += beans_add
+        cups += cups_add
+        print('')
+    elif action == 'take':
+        print(f'\nI gave you ${money}\n')
+        money = 0
+        
+    elif action == 'remaining':
+        print(f'''\nThe coffee machine has:
+{water} ml of water
+{milk} ml of milk
+{beans} g of coffee beans
+{cups} disposable cups
+${money} of money\n''')
+        continue
+    elif action == 'exit':
+        break
